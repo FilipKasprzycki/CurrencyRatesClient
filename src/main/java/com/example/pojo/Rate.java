@@ -15,41 +15,17 @@ public class Rate {
 
     @SerializedName("bid")
     @Expose
-    private Double bid;
+    private Double sellPrice;
 
     @SerializedName("ask")
     @Expose
-    private Double ask;
+    private Double buyPrice;
 
-    public String getNo() {
-        return no;
-    }
-
-    public void setNo(String no) {
-        this.no = no;
-    }
-
-    public String getEffectiveDate() {
-        return effectiveDate;
-    }
-
-    public void setEffectiveDate(String effectiveDate) {
-        this.effectiveDate = effectiveDate;
-    }
-
-    public Double getBid() {
-        return bid;
-    }
-
-    public void setBid(Double bid) {
-        this.bid = bid;
-    }
-
-    public Double getAsk() {
-        return ask;
-    }
-
-    public void setAsk(Double ask) {
-        this.ask = ask;
+    @Override
+    public String toString() {
+        return "Data: " + effectiveDate +
+                "\n\tcena kupna: " + buyPrice +
+                "\n\tcena sprzedaży: " + sellPrice +
+                "\n\tróżnica: " + (buyPrice - sellPrice);
     }
 }

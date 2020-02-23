@@ -3,7 +3,9 @@ package com.example.pojo;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class CurrencyRates {
 
@@ -23,35 +25,14 @@ public class CurrencyRates {
     @Expose
     private List<Rate> rates = null;
 
-    public String getTable() {
-        return table;
+    private List<Rate> getRates() {
+        return rates == null ? Collections.emptyList() : Collections.unmodifiableList(rates);
     }
 
-    public void setTable(String table) {
-        this.table = table;
-    }
-
-    public String getCurrency() {
-        return currency;
-    }
-
-    public void setCurrency(String currency) {
-        this.currency = currency;
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
-    }
-
-    public List<Rate> getRates() {
-        return rates;
-    }
-
-    public void setRates(List<Rate> rates) {
-        this.rates = rates;
+    @Override
+    public String toString() {
+        return getRates().stream()
+                .map(Rate::toString)
+                .collect(Collectors.joining("\n"));
     }
 }
